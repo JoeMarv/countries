@@ -3,9 +3,12 @@ import CountryCard from './CountryCard'
 
 const CountryContainer = () => {
   return (
-    <section>
-        CountryContainer
-        <CountryCard/>
+    <section className='pt-22 xl:pt-26 px-16'>
+        <div id="search-bar">
+          search
+        </div>
+
+          <CountryCard/>
     </section>
   )
 }
