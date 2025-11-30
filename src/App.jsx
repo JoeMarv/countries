@@ -4,7 +4,7 @@ import CountryContainer from './components/CountryContainer'
 
 const App = () => {
   return (
-    <main className='font-sans'>
+    <main className='font-sans w-full overflow-x-hidden'>
       <NavBar/>
       <CountryContainer />
     </main>

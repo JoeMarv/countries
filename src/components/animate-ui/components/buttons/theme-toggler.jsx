@@ -59,7 +59,7 @@ function ThemeTogglerButton({
           // Added 'w-auto' to allow width to grow, and 'px-4' for better spacing
           className={cn(
             buttonVariants({ variant, size, className }),
-            'w-auto px-4 flex items-center justify-center gap-2'
+            'w-auto flex items-center justify-center gap-2'
           )}
           onClick={(e) => {
             onClick?.(e);
@@ -71,7 +71,7 @@ function ThemeTogglerButton({
           {getIcon(effective, resolved, modes)}
           
           {/* Render the Text */}
-          <span className="text-sm font-medium">
+          <span>
             {getLabel(effective, resolved, modes)}
           </span>
         </button>
