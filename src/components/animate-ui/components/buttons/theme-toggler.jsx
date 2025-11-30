@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 const getIcon = (effective, resolved, modes) => {
   const theme = modes.includes('system') ? effective : resolved;
   return theme === 'system' ? (
-    <Monitor className="h-4 w-4" />
+    <Monitor className="h-8 w-8" />
   ) : theme === 'dark' ? (
     <Moon className="h-4 w-4" />
   ) : (

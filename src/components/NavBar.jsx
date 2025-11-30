@@ -3,12 +3,10 @@ import { ThemeTogglerButton } from "./animate-ui/components/buttons/theme-toggle
 
 const NavBar = () => {
   return (
-    <nav className="hidden">
-      <h1 className="hidden">Where in the world?</h1>
+    <nav className="flex-center flex-row justify-between px-16 py-6">
+      <h1 className="">Where in the world?</h1>
 
-      <div>
-        <ThemeTogglerButton />
-      </div>
+      <ThemeTogglerButton className='w-8 font-sans'/>
     </nav>
   );
 };
