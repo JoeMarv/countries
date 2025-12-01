@@ -1,39 +1,62 @@
 import React from "react";
 import { countryDetails } from "../../constants";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { Link } from "react-router-dom";
 
 const CountryCard = () => {
+  useGSAP(() => {
+    gsap.utils.toArray('.country-card').forEach((but) => {
+      const buttonMove = gsap.timeline({
+        scrollTrigger: {
+          trigger: but,
+          start: "top 95%",
+          end: "top 60%",
+        }
+      })
+      
+      buttonMove.from(but, {
+        opacity: 0,
+        yPercent: 30,
+        ease: "power1.inOut",
+        duration: 0.5,
+      });
+    })
+  }, [])
   return (
-    <section className="grid xl:grid-cols-4 gap-8 xl:gap-4 ">
+    <section className="grid xl:grid-cols-4 gap-8 xl:gap-16 overflow-hidden">
       {countryDetails.map((country) => (
-        <button className="bg-card shadow-lg rounded-sm" key={country.name}>
+        <Link to={`/${country.name}`} className="bg-card shadow-lg rounded-sm country-card" key={country.name}>
           <img
             src={country.flags.svg}
-            alt={country.name}
+            alt={`Flag of ${country.name}`}
             loading="lazy"
-            className="rounded-t-sm"
+            className="rounded-t-sm w-full h-40 object-cover "
           />
 
-          <div className="text-left px-4">
-            <h2 className="font-extrabold">{country.name}</h2>
+          <div className="text-left px-6 pt-4 pb-8">
+            <h2 className="font-extrabold text-lg py-2">{country.name}</h2>
 
             <div>
               <div className="flex justify-start gap-1">
                 <h3 className="font-semibold">Population:{""}</h3>
-                <p>{country.population.toLocaleString()}</p>
+                <p className="text-muted-foreground">
+                  {country.population.toLocaleString()}
+                </p>
               </div>
 
               <div className="flex justify-start gap-1">
                 <h3 className="font-semibold">Region:{""} </h3>
-                <p>{country.region}</p>
+                <p className="text-muted-foreground">{country.region}</p>
               </div>
 
               <div className="flex justify-start gap-1">
                 <h3 className="font-semibold">Capital:{""}</h3>
-                <p>{country.capital}</p>
+                <p className="text-muted-foreground">{country.capital}</p>
               </div>
             </div>
           </div>
-        </button>
+        </Link>
       ))}
     </section>
   );
