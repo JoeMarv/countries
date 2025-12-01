@@ -1,32 +1,12 @@
 import React from "react";
 import { countryDetails } from "../../constants";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import { Link } from "react-router-dom";
 
 const CountryCard = () => {
-  useGSAP(() => {
-    gsap.utils.toArray('.country-card').forEach((but) => {
-      const buttonMove = gsap.timeline({
-        scrollTrigger: {
-          trigger: but,
-          start: "top 95%",
-          end: "top 60%",
-        }
-      })
-      
-      buttonMove.from(but, {
-        opacity: 0,
-        yPercent: 30,
-        ease: "power1.inOut",
-        duration: 0.5,
-      });
-    })
-  }, [])
   return (
     <section className="grid xl:grid-cols-4 gap-8 xl:gap-16 overflow-hidden">
       {countryDetails.map((country) => (
-        <Link to={`/${country.name}`} className="bg-card shadow-lg rounded-sm country-card" key={country.name}>
+        <Link to={`/${country.name}`} className="bg-card shadow-lg rounded-sm country-card " key={country.name}>
           <img
             src={country.flags.svg}
             alt={`Flag of ${country.name}`}
