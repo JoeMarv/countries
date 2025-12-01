@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const CountryCard = () => {
   return (
-    <section className="grid xl:grid-cols-4 gap-8 xl:gap-16 overflow-hidden">
+    <section className="grid xl:grid-cols-4 gap-8 xl:gap-16 py-6">
       {countryDetails.map((country) => (
         <Link to={`/${country.name}`} className="bg-card shadow-lg rounded-sm country-card " key={country.name}>
           <img
