@@ -16,7 +16,6 @@ const App = () => {
         <Route path="/" element={<CountryContainer />} />
         <Route path="/:countryName" element={<CountryDetail />} />
       </Routes>
-      <CountryContainer />
     </main>
   );
 };
