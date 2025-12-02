@@ -1,23 +1,23 @@
 import React from "react";
 import NavBar from "./components/NavBar";
 import CountryContainer from "./components/CountryContainer";
-import ClickSpark from "./components/ClickSpark";
 import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
-gsap.registerPlugin(ScrollTrigger, SplitText)
+import CountryDetail from "./components/CountryDetail";
+import { Route, Routes } from "react-router-dom";
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
   return (
-    <ClickSpark sparkColor='#808080'
-    sparkSize={10}
-    sparkRadius={15}
-    sparkCount={8}
-    duration={400}>
-      <main className="font-sans w-full overflow-x-hidden ">
-        <NavBar />
-        <CountryContainer />
-      </main>
-    </ClickSpark>    
+    <main className="font-sans w-full overflow-x-hidden ">
+      <NavBar />
+
+      <Routes>
+        <Route path="/" element={<CountryContainer />} />
+        <Route path="/:countryName" element={<CountryDetail />} />
+      </Routes>
+      <CountryContainer />
+    </main>
   );
 };
 
