@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
@@ -28,33 +29,47 @@ const FilterBar = ({ setRegion }) => {
     <div className="relative w-48 font-semibold text-sm" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full bg-card text-foreground px-5 py-4 shadow-md rounded-md hover:opacity-80 transition-opacity"
+        className="flex items-center justify-between w-full bg-card text-foreground px-5 py-4 shadow-md rounded-md md:rounded-sm hover:opacity-80 transition-opacity"
       >
         {selected}
-        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ChevronDown className="w-4 h-4" />
+        </motion.div>
       </button>
 
-      {isOpen && (
-        <div className="absolute top-full left-0 w-full mt-1 bg-card text-foreground shadow-lg rounded-md z-10 py-2">
-          {/* Option to clear filter */}
-          <button
-            onClick={() => handleSelect("Filter by Region")}
-            className="block w-full text-left px-5 py-2 hover:bg-background/50 transition-colors"
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="absolute top-full left-0 w-full mt-1 bg-card text-foreground shadow-lg rounded-md md:rounded-sm z-10 overflow-hidden"
           >
-            All Regions
-          </button>
-          
-          {regions.map((region) => (
-            <button
-              key={region}
-              onClick={() => handleSelect(region)}
-              className="block w-full text-left px-5 py-2 hover:bg-background/50 transition-colors"
-            >
-              {region}
-            </button>
-          ))}
-        </div>
-      )}
+            <div className="py-2">
+              <button
+                onClick={() => handleSelect("Filter by Region")}
+                className="block w-full text-left px-5 py-2 hover:bg-background/50 transition-colors"
+              >
+                All Regions
+              </button>
+              
+              {regions.map((region) => (
+                <button
+                  key={region}
+                  onClick={() => handleSelect(region)}
+                  className="block w-full text-left px-5 py-2 hover:bg-background/50 transition-colors"
+                >
+                  {region}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
