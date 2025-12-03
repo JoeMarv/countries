@@ -3,11 +3,20 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
+import ClickSpark from "./components/ClickSpark";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <ClickSpark
+        sparkColor="#888"
+        sparkSize={15}
+        sparkRadius={15}
+        sparkCount={8}
+        duration={400}
+      >
+        <App />
+      </ClickSpark>
     </BrowserRouter>
   </StrictMode>
 );

@@ -1,7 +1,7 @@
 import { useRef, useEffect, useCallback } from 'react';
 
 const ClickSpark = ({
-  sparkColor = '#808080',
+  sparkColor = '#fff',
   sparkSize = 10,
   sparkRadius = 15,
   sparkCount = 8,
@@ -47,18 +47,21 @@ const ClickSpark = ({
     };
   }, []);
 
-  const easeFunc = useCallback(t => {
-    switch (easing) {
-      case 'linear':
-        return t;
-      case 'ease-in':
-        return t * t;
-      case 'ease-in-out':
-        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-      default:
-        return t * (2 - t);
-    }
-  }, [easing]);
+  const easeFunc = useCallback(
+    t => {
+      switch (easing) {
+        case 'linear':
+          return t;
+        case 'ease-in':
+          return t * t;
+        case 'ease-in-out':
+          return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        default:
+          return t * (2 - t);
+      }
+    },
+    [easing]
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -129,26 +132,8 @@ const ClickSpark = ({
   };
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: '100%'
-      }}
-      onClick={handleClick}>
-      <canvas
-        ref={canvasRef}
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'block',
-          userSelect: 'none',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          pointerEvents: 'none',
-          zIndex: 9999,
-        }} />
+    <div className="relative w-full h-full" onClick={handleClick}>
+      <canvas ref={canvasRef} className="w-full h-full block absolute top-0 left-0 select-none pointer-events-none" />
       {children}
     </div>
   );

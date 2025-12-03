@@ -1,11 +1,18 @@
 import React from "react";
-import { countryDetails } from "../../constants";
 import { Link } from "react-router-dom";
 
-const CountryCard = () => {
+const CountryCard = ({countries}) => {
+  if (countries.length === 0) {
+    return (
+      <div className="text-center text-xl text-gray-500 mt-10">
+        No countries found.
+      </div>
+    );
+  }
+
   return (
-    <section className="grid xl:grid-cols-4 gap-10 xl:gap-16 py-6 relative z-20">
-      {countryDetails.map((country) => (
+    <section className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10 md:gap-12 lg:gap-14 xl:gap-16 2xl:gap-18 py-6 relative">
+      {countries.map((country) => (
         <Link to={`/${country.name}`} className="bg-card shadow-lg rounded-sm country-card " key={country.name}>
           <img
             src={country.flags.svg}

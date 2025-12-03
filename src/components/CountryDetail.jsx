@@ -31,7 +31,7 @@ const CountryDetail = () => {
     <div className="pt-24 xl:pt-32 px-6 md:px-16 min-h-screen pb-10">
       <Link
         to="/"
-        className="inline-flex items-center gap-2 bg-card text-foreground px-8 py-2 rounded-sm shadow-md hover:opacity-75 transition-opacity mb-16"
+        className="inline-flex items-center gap-2 bg-card text-foreground px-6 xl:px-8 py-2 rounded-xs xl:rounded-sm shadow-md hover:opacity-75 transition-opacity mb-16"
       >
         <ArrowLeft className="h-4 w-4" />
         Back
@@ -46,17 +46,17 @@ const CountryDetail = () => {
         <div className="text-foreground">
           <h1 className="text-3xl font-extrabold mb-8">{country.name}</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-            <div className="space-y-2">
-              <p><span className="font-semibold">Native Name:</span> {country.nativeName}</p>
-              <p><span className="font-semibold">Population:</span> {country.population.toLocaleString()}</p>
-              <p><span className="font-semibold">Region:</span> {country.region}</p>
-              <p><span className="font-semibold">Sub Region:</span> {country.subregion}</p>
-              <p><span className="font-semibold">Capital:</span> {country.capital}</p>
+            <div className="space-y-2 text-muted-foreground">
+              <p><span className="font-semibold text-primary">Native Name:</span> {country.nativeName}</p>
+              <p><span className="font-semibold text-primary">Population:</span> {country.population.toLocaleString()}</p>
+              <p><span className="font-semibold text-primary">Region:</span> {country.region}</p>
+              <p><span className="font-semibold text-primary">Sub Region:</span> {country.subregion}</p>
+              <p><span className="font-semibold text-primary">Capital:</span> {country.capital}</p>
             </div>
-            <div className="space-y-2">
-              <p><span className="font-semibold">Top Level Domain:</span> {country.topLevelDomain?.join(", ")}</p>
-              <p><span className="font-semibold">Currencies:</span> {country.currencies?.map((c) => c.name).join(", ")}</p>
-              <p><span className="font-semibold">Languages:</span> {country.languages?.map((l) => l.name).join(", ")}</p>
+            <div className="space-y-2 text-muted-foreground">
+              <p><span className="font-semibold text-primary">Top Level Domain:</span> {country.topLevelDomain?.join(", ")}</p>
+              <p><span className="font-semibold text-primary">Currencies:</span> {country.currencies?.map((c) => c.name).join(", ")}</p>
+              <p><span className="font-semibold text-primary">Languages:</span> {country.languages?.map((l) => l.name).join(", ")}</p>
             </div>
           </div>
           {country.borders && (
